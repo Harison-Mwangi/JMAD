@@ -29,4 +29,9 @@ jobs:
     - name: Run Tests
       run: |
         cd jmad
-        python manage.py test
+        echo $SELENIUM_JAR_PATH
+        python manage.py test        
+      env:
+        SECRET_KEY: ${{secrets.SECRET_KEY}}
+        ALLOWED_HOSTS: ${{secrets.ALLOWED_HOSTS}}
+        DEBUG: ${{secrets.DEBUG}}
