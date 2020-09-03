@@ -26,10 +26,13 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     
+    - name: Start remote Selenium server
+      run: |
+        export SELENIUM_SERVER=$(java -jar $SELENIUM_JAR_PATH)
+    
     - name: Run Tests
       run: |
         cd jmad
-        export SELENIUM_SERVER=$(java -jar $SELENIUM_JAR_PATH)
         python manage.py test        
       env:
         SECRET_KEY: ${{secrets.SECRET_KEY}}
