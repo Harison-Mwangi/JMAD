@@ -8,9 +8,9 @@ from solos.models import Solo
 class StudentTestCase(LiveServerTestCase):
 
     def setUp(self):
-        if config('SELENIUM_JAR_PATH', default='') != '':
+        if config('SELENIUM_SERVER', default='') != '':
             self.browser = webdriver.Remote(
-                command_executor=config('SELENIUM_JAR_PATH'),
+                command_executor=config('SELENIUM_SERVER'),
                 desired_capabilities=DesiredCapabilities.CHROME
             )
         else:

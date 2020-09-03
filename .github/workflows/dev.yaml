@@ -29,7 +29,7 @@ jobs:
     - name: Run Tests
       run: |
         cd jmad
-        echo $SELENIUM_JAR_PATH
+        export SELENIUM_SERVER=$(java -jar $SELENIUM_JAR_PATH)
         python manage.py test        
       env:
         SECRET_KEY: ${{secrets.SECRET_KEY}}
