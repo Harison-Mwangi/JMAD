@@ -26,9 +26,11 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     
-    - name: Start remote Selenium server
+    - name: Install geckodriver
       run: |
-        export SELENIUM_SERVER=$(java -jar $SELENIUM_JAR_PATH)
+        wget https://github.com/mozilla/geckodriver/releases/download/v0.27.0/geckodriver-v0.27.0-linux64.tar.gz
+        tar -xzf geckodriver-v0.27.0-linux64.tar.gz
+        ls -la /
     
     - name: Run Tests
       run: |
