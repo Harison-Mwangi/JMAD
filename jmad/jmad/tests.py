@@ -1,21 +1,12 @@
 from django.test import LiveServerTestCase
 from selenium import webdriver
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-from decouple import config
 
 from solos.models import Solo
 
 class StudentTestCase(LiveServerTestCase):
 
     def setUp(self):
-        if config('SELENIUM_SERVER', default='') != '':
-            self.browser = webdriver.Remote(
-                command_executor=config('SELENIUM_SERVER'),
-                desired_capabilities=DesiredCapabilities.CHROME
-            )
-        else:
-            self.browser = webdriver.Firefox()
-
+        self.browser = webdriver.Firefox()
         self.browser.implicitly_wait(2)
 
         self.solo1 = Solo.objects.create(
