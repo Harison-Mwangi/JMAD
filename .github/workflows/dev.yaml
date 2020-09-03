@@ -30,12 +30,14 @@ jobs:
       run: |
         wget https://github.com/mozilla/geckodriver/releases/download/v0.27.0/geckodriver-v0.27.0-linux64.tar.gz
         tar -xzf geckodriver-v0.27.0-linux64.tar.gz
+        sudo cp  geckodriver /usr/bin/
         ls -la /
     
     - name: Run Tests
       run: |
         cd jmad
-        python manage.py test        
+        python manage.py test solos
+        python manage.py test jmad
       env:
         SECRET_KEY: ${{secrets.SECRET_KEY}}
         ALLOWED_HOSTS: ${{secrets.ALLOWED_HOSTS}}
