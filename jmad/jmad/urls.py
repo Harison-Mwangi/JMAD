@@ -16,9 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from solos.views import index
+from solos.views import index, SoloDetailView
 
 urlpatterns = [
     path('', index),
+    path('solos/<str:pk>/', SoloDetailView.as_view()),
     path('admin/', admin.site.urls),
 ]
