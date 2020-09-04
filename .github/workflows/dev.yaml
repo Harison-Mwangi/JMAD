@@ -30,12 +30,10 @@ jobs:
       run: |
         sudo apt-get install firefox
     
-    - name: Install geckodriver
+    - name: Start remote selenium server
       run: |
-        wget https://github.com/mozilla/geckodriver/releases/download/v0.27.0/geckodriver-v0.27.0-linux64.tar.gz
-        tar -xzf geckodriver-v0.27.0-linux64.tar.gz
-        sudo cp  geckodriver /usr/bin/
-        ls -la /
+        chmod +x selenium.sh
+        ./.github/scripts/selenium.sh
     
     - name: Run Tests
       run: |
