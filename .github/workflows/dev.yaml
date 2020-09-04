@@ -32,7 +32,7 @@ jobs:
     
     - name: Start remote selenium server
       run: |
-        chmod +x selenium.sh
+        chmod +x .github/scripts/selenium.sh
         ./.github/scripts/selenium.sh
     
     - name: Run Tests
