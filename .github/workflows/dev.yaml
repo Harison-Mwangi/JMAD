@@ -26,20 +26,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     
-    - name: Install Firefox
-      run: |
-        sudo apt-get install firefox
-    
-    - name: Start remote selenium server
-      run: |
-        chmod +x .github/scripts/selenium.sh
-        ./.github/scripts/selenium.sh
-    
     - name: Run Tests
       run: |
         cd jmad
-        python manage.py test solos
-        python manage.py test jmad
+        python manage.py test --exclude-tag=functional
       env:
         SECRET_KEY: ${{secrets.SECRET_KEY}}
         ALLOWED_HOSTS: ${{secrets.ALLOWED_HOSTS}}
