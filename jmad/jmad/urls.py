@@ -16,12 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from solos.views import index, SoloDetailView
+from solos.views import index, solo_detail
 
 urlpatterns = [
     path('', index),
     path('recordings/<str:album>/<str:track>/<str:artist>/', 
-        SoloDetailView.as_view(), name='solo_detail_view'
+        solo_detail, name='solo_detail_view'
     ),
     path('admin/', admin.site.urls),
 ]
