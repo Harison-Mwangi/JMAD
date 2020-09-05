@@ -21,7 +21,7 @@ from solos.views import index, SoloDetailView
 urlpatterns = [
     path('', index),
     path('recordings/<str:album>/<str:track>/<str:artist>/', 
-        SoloDetailView.as_view()
+        SoloDetailView.as_view(), name='solo_detail_view'
     ),
     path('admin/', admin.site.urls),
 ]
