@@ -28,8 +28,8 @@ jobs:
     
     - name: Set up headless firefox and install geckodriver
       run: |
-        chmod +x .github/scripts/headless-firefox.sh
-        ./.github/scripts/headless-firefox.sh
+        chmod +x .github/scripts/selenium-setup.sh
+        ./.github/scripts/selenium-setup.sh
     
     - name: Run Tests
       run: |
