@@ -16,7 +16,8 @@ class StudentTestCase(LiveServerTestCase):
         if os.getenv('SELENIUM_JAR_PATH'):
             options = Options()
             options.add_argument('-headless')
-            self.browser = Firefox(executable_path='geckodriver',
+            self.browser = webdriver.Firefox(
+                executable_path='geckodriver',
                 options=options
             )
             self.browser.implicitly_wait(2)
