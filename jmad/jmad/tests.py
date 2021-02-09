@@ -1,9 +1,8 @@
+from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.test import LiveServerTestCase, tag
 
 from selenium import webdriver
-from selenium.webdriver.firefox.options import Options
-import os
 
 from solos.models import Solo
 from albums.models import Album, Track
@@ -12,19 +11,10 @@ from albums.models import Album, Track
 class StudentTestCase(LiveServerTestCase):
 
     def setUp(self):
-        # set up browser in GitHub runner
-        if os.getenv('SELENIUM_JAR_PATH'):
-            options = Options()
-            options.add_argument('-headless')
-            self.browser = webdriver.Firefox(
-                executable_path='geckodriver',
-                options=options
-            )
-            self.browser.implicitly_wait(2)
-
-        else:
-            self.browser = webdriver.Firefox()
-            self.browser.implicitly_wait(2)
+        options = webdriver.firefox.options.Options()
+        options.headless = settings.HEADLESS_BROWSER_TESTS
+        self.browser = webdriver.Firefox(options=options)
+        self.browser.implicitly_wait(2)
 
         self.album1 = Album.objects.create(
             name='My Favorite Things',
