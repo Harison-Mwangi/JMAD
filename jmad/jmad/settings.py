@@ -131,4 +131,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # Project Specific
 # ================
 
-HEADLESS_BROWSER_TESTS = os.getenv('CI', False)
+HEADLESS_BROWSER_TESTS = config('CI', cast=bool, default=False)
